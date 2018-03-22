@@ -44,10 +44,68 @@ class: middle
 - Container - a app or service build on docker infrastructure
 
 ---
+
 class: center, middle, title
 # Docker Setup & Commands
 
 ---
+
+# Installation
+
+- Go To the docker website and follow the instructions to install for your
+  platform
+- Available on multiple platforms
+  - Windows
+  - Linux
+  - MacOS
+
+---
+class: middle
+# Running a container
+
+```sh
+docker run nginx --name nginx
+```
+
+```sh
+docker stop nginx
+```
+
+---
+
+class: middle
+# View running containers
+
+```sh
+docker ps
+```
+
+```sh
+docker ps -a
+```
+
+---
+
+class: middle
+# Viewing Container Logs
+```sh
+docker logs container_name
+```
+
+---
+
+class: middle
+# Run an One Off Command In a Container
+```sh
+docker exec -it container_name /bin/bash
+```
+---
+
+class: title, center, middle
+# Application Setup
+
+---
+
 # Command To Run In the Container
 - The last line in your Dockerfile should specify the command to run or put the
   commands in your documentation
