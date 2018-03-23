@@ -1,12 +1,23 @@
+require 'filewatcher'
+
 task default: %w[slides]
 
 task slides: ['clean', 'slides.html']
 
 task :clean do
+  puts "removing old presentation"
   %x[rm -f *.html]
 end
 
+task :watch do
+  puts "Watching for Changes"
+  Filewatcher.new('slides.md').watch do
+    task Rake::Task[:slides].invoke
+  end
+end
+
 rule '.html' => ['.md'] do |t|
+  puts "Building New Presentation"
   require 'erb'
   template = File.read('slides.html.erb')
   File.open(t.name, 'w') do |file|
@@ -14,4 +25,5 @@ rule '.html' => ['.md'] do |t|
     TITLE = BODY.lines.find{ |line| line =~ /^#+\s*/ }.chomp.sub(/^#+\s*/, '')
     file.write(ERB.new(template).result(binding))
   end
+  puts "Complete..."
 end

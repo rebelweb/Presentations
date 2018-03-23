@@ -243,3 +243,15 @@ application_web:
     - nginx_conf:/etc/nginx/conf.d
     - nginx_ssl:/etc/nginx/ssl
 ```
+
+---
+
+# Defining Volumes
+- Volumes store persistent data to be mounted in your container or container(s)
+- Can be mounted in multiple containers at once
+
+```docker-compose
+volumes:
+  nginx_conf:
+  nginx_ssl:
+```
