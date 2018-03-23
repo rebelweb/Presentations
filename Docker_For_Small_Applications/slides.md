@@ -104,6 +104,33 @@ docker exec -it container_name /bin/bash
 class: title, center, middle
 # Application Setup
 
+???
+
+- Since I am familiar with Ruby on Rails the following examples will follow an
+  example application
+---
+
+# Prepare Application
+- You will mostly like need to make changes to application configuration
+- Think of how your app uses external services (i.e. database, cache,
+  websockets, Background services)
+- Use Environment Variables with defaults so you are not locked in to only using
+  docker as a deploy method
+
+```ruby
+redis_host = ENV.fetch('REDIS_HOST') { '127.0.0.1' }
+redis_port = ENV.fetch('REDIS_PORT') { '6379' }
+redis_db   = ENV.fetch('REDIS_DB') { '0' }
+
+Sidekiq.configure_server do |config|
+  config.redis = { host: redis_host, port: redis_port, db: redis_db }
+end
+
+Sidekiq.configure_client do |config|
+  config.redis = { host: redis_host, port: redis_port, db: redis_db }
+end
+```
+
 ---
 
 # Command To Run In the Container
@@ -129,17 +156,6 @@ create_db
 run_server
 ```
 
----
-
-# Logging
-
-- Everything in your containers log to standard out
-- Logging to standard out will allow you to view logs using docker commands
-- Prevents contianer disk space growth (where log cleanup isn't easily done)
-
-```sh
-docker logs container_name
-```
 ---
 
 # The Dockerfile
@@ -201,18 +217,29 @@ RUN bundle exec rake webpacker:compile RAILS_ENV=production
 
 ---
 
-# Talking between containers
-- Docker has a internal network so you can talk between containers
-- Always talk to containers by name, because their IP will change when updates occur
-- We will need to take this into account while developing the application
+class: middle, center, title
+# Docker Compose
 
 ---
 
-# Container Environment Variables
-- Used to store container settings
-  - database params
-  - api keys for external services
-- changes behavior of a container
-- container does not need rebuilt when changing variables
+# What is it?
+- Describes all containers need to run application
+- Describes volumes for persistent storage
+- Links Containers to allow networking between them
 
 ---
+
+# Defining Compose Container
+
+```docker-compose
+application_web:
+  container_name: web
+  image: nginx:latest
+  restart: always
+  ports:
+    - '443:443'
+    - '80:80'
+  volumes
+    - nginx_conf:/etc/nginx/conf.d
+    - nginx_ssl:/etc/nginx/ssl
+```
