@@ -1,3 +1,64 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Git Basics</title>
+    <meta charset="utf-8">
+    <style>
+      @import url(https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz);
+      @import url(https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic);
+      @import url(https://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700,400italic);
+
+      .remark-slide-content header, .remark-slide-content footer, .remark-slide-content .remark-slide-number {
+        font-size: 16px;
+        color: #444444;
+      }
+      .remark-slide-content header > *, .remark-slide-content footer > *, .remark-slide-content .remark-slide-number {
+        position: absolute;
+        margin: 0;
+        opacity: 0.75;
+      }
+      .remark-slide-content header > * {
+        top: 8px;
+      }
+      .remark-slide-content header .left, .remark-slide-content footer .left, .remark-slide-content .remark-slide-number {
+        left: 20px;
+        right: auto;
+      }
+      .remark-slide-content header .right, .remark-slide-content footer .right {
+        right: 20px;
+        left: auto;
+      }
+      .remark-slide-content footer > *, .remark-slide-content .remark-slide-number {
+        bottom: 8px;
+      }
+
+      body { font-family: 'Droid Serif'; }
+      h1, h2, h3 {
+        font-family: 'Yanone Kaffeesatz';
+        font-weight: normal;
+      }
+      .remark-code, .remark-inline-code { font-family: 'Ubuntu Mono'; }
+
+      .remark-code, .remark-inline-code { font-family: monospace; line-height: 1.5; font-size: 16px; }
+      .remark-inline-code { font-size: 24px; }
+      .remark-code {
+        counter-reset: code-line-numbers;
+      }
+      .remark-code .remark-code-line {
+        counter-increment: code-line-numbers;
+      }
+      .remark-code .remark-code-line::before {
+        content: counter(code-line-numbers);
+        display: inline-block;
+        width: 1.2em;
+        margin-right: 1em;
+        color: #999999;
+        -webkit-user-select: none; /* The line numbers should not be selectable. */
+      }
+    </style>
+  </head>
+  <body>
+    <textarea id="source">
 layout: true
 <header>
   <p class="left">Effingham Software Developer Group</p>
@@ -235,3 +296,12 @@ machine.
 ```sh
 git pull origin master
 ```
+
+    </textarea>
+    <script src="https://remarkjs.com/downloads/remark-latest.min.js">
+    </script>
+    <script>
+      var slideshow = remark.create();
+    </script>
+  </body>
+</html>
