@@ -297,6 +297,103 @@ machine.
 git pull origin master
 ```
 
+---
+
+# Branching
+
+Branching allows you to make code changes in an isolated environment, so you
+won’t affect your production code base. This allow you to push bug fixes without
+deploying partially built new features or waiting until those features are
+complete.
+
+- Goal is to keep master (main branch) stable
+- Make changes in branches and merges changes into master once complete.
+- Freedom to experiment
+
+```sh
+git branch experiment
+git checkout -b experiment
+```
+
+---
+
+# Merging
+
+So we made changes in a branch and are ready to put those changes in production.
+We need to merge. Most of the time you will merge using your remote repository’s
+web interface. The exception would be merge conflicts. To merge using the
+command line interface you first checkout out the target branch and use the
+merge subcommand and passing the name of the merging branch.
+
+```sh
+# Checkout Master Branch
+git checkout
+# Merge Changes
+git merge experience
+```
+
+---
+
+# Merge Conflicts
+
+Merge conflicts are when the changes made in the merging branch conflict with
+changes made in the target branch since the merging branch was created. In this
+case you/your team will need to go through the conflicts and decide how to move
+forward.
+
+---
+
+# Resolving Merge Conflicts
+
+Most git hosting services will guide you through the process. You will have a
+list of conflicts (sometimes there is more than one) and you will need to go to
+each affected file and decide which branches version to keep, which to remove,
+sometimes a mix between both.
+
+If doing on a local machine my favorite tool is the merge-conflicts plugin for
+Atom. It will give you a list and you pick and choose the changes you want or a
+combination of both.
+
+---
+
+# Tagging
+
+When you deploying to production you should generate a tag to show deploy points
+in your code base. A tag is a name for a specific commit. This works similar to
+git commit. It is recommend that your tags name are a semantic version number.
+
+```git
+git tag -a '0.0.1' -m '0.0.1'
+```
+
+---
+
+# Semantic Versioning
+
+Semantic Versioning is a standardized way to version software. It is three set
+of numbers separated by (.) - 5.4.0
+
+- The first number is a major version (5)
+- The second number is the minor version (4)
+- The third number is the patch number (0)
+
+---
+
+# Forking
+
+Most remote servers allow you to fork or copy a repository to a new location
+with a new name. The main use of this is when you want to work with a project
+that isn’t yours and you want to make a change i.e. a bug fix or a new feature.
+You can do a pull request to allow the forked repository to pull in your change.
+
+---
+
+# GUI Tools
+
+- https://www.gitkraken.com/pro (cost for commercial use)
+- https://www.sourcetreeapp.com/ (free)
+- Many editors have git tools built in!
+
     </textarea>
     <script src="https://remarkjs.com/downloads/remark-latest.min.js">
     </script>
