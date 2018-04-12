@@ -3,6 +3,7 @@ GEM
   specs:
     filewatcher (1.0.1)
       trollop (~> 2.1, >= 2.1.2)
+    rake (12.3.1)
     trollop (2.1.2)
 
 PLATFORMS
@@ -10,6 +11,7 @@ PLATFORMS
 
 DEPENDENCIES
   filewatcher
+  rake
 
 BUNDLED WITH
    1.16.1
