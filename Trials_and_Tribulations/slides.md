@@ -92,7 +92,7 @@ class: middle, center
 - Offline Progressive Web Application
 
 ---
-
+class: middle, center
 # On Premises Only
 
 ---
@@ -100,7 +100,7 @@ class: middle, center
 # Rails Deployment Phase 1
 
 - Manually Install all Dependencies
-- Takes long time for each
+- Takes long time to update ever customer
 - Not scalable
 
 ---
@@ -108,9 +108,14 @@ class: middle, center
 # Rails Deployment Phase 2
 
 - Build Chef Omnibus Package
-- Took Setups from several hours to under an hour
-- Easier to Deploy Updates
+- Took setting up an instance from several hours to under an hour
+- Everything was included that was needed to run the application
+- Easier to deploy updates to a customer, via system update
 - Becomes just a linux package etc. yum, deb
+
+```
+yum update
+```
 
 ---
 
@@ -119,6 +124,9 @@ class: middle, center
 - A Ruby DSL to build a compile all libraries, services, languages,
   and the application so the application can run with no system
   dependencies
+- Uses runit for service management
+- Everything contained in 1 directory
+- Centralized configuration file
 - Pros:
   - Saves time in setup (1 thing to install vs many)
   - Saves time in deployment (just run system update )
@@ -166,6 +174,7 @@ class: middle, center
 
 ---
 
+class: middle, center
 # Let's Go To The Cloud
 
 ---
