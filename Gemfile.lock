@@ -1,10 +1,10 @@
 GEM
   remote: https://rubygems.org/
   specs:
-    filewatcher (1.0.1)
-      trollop (~> 2.1, >= 2.1.2)
-    rake (12.3.1)
-    trollop (2.1.2)
+    filewatcher (1.1.1)
+      optimist (~> 3.0)
+    optimist (3.0.1)
+    rake (13.0.6)
 
 PLATFORMS
   ruby
@@ -14,4 +14,4 @@ DEPENDENCIES
   rake
 
 BUNDLED WITH
-   1.16.1
+   1.17.3
