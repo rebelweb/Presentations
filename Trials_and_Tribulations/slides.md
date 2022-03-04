@@ -204,3 +204,66 @@ class: middle, center
 
 ---
 
+# The VPN Solution for Syncing
+
+- VPN Appliances too expenses
+- Chose SSTP VPN a setup through Windows Server
+- Pros:
+  - Cheap, no per user cost
+  - Integrates into Active Directory
+- Cons:
+  - Complicated setup (Every user needs a certificate)
+  - Doesn't work every where (Blocked on Public Wifi)
+  - Obscure error messages
+
+---
+
+# Deploying the Rails Application (First Attempt)
+
+- git checkout the application for each customer and run on a different port
+- connect to a different database number on redis server
+- Pros:
+  - It worked (kinda)
+- Cons:
+  - Fragile
+  - Not scalable
+  - Updates are slow
+
+---
+
+# Deploying the Rails Application (Second Attempt)
+
+- Docker!
+- Docker Compose to make deploying quick
+- Need to ensure all settings are environment variables
+- Each Customer:
+  - Application Container
+  - Sidekiq Container
+  - Redis Container
+- Centralized Nginx Container
+
+---
+
+# Problems Arise
+
+- Application Stores DateTimes in local time.
+  - Ran container in priviledged mode
+  - Set the time zone in the container
+  - originally was using a database trick
+- Using Windows Shares with Docker was complicated
+  - Tried mounting shares in the container
+  - Also tried mounting externally
+
+---
+
+# Add Customer Portal & New Amusement Collections Application
+
+- Container the pieces so it can be deployed to the customer
+- Simply deploy the containers.
+
+---
+
+# Takeaways
+
+- Deploying can be hard
+- Development decisions can impact how an application is deployed
